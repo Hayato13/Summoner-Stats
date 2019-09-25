@@ -3,14 +3,17 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { ChampionsComponent } from './champions/champions.component';
-
+import { HttpClientModule } from '@angular/common/http';
+import { HeaderComponent } from './header/header.component';
 @NgModule({
    declarations: [
       AppComponent,
-      ChampionsComponent
+      ChampionsComponent,
+      HeaderComponent
    ],
    imports: [
-      BrowserModule
+      BrowserModule,
+      HttpClientModule
    ],
    providers: [],
    bootstrap: [
