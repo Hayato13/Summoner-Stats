@@ -5,12 +5,14 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ChampionsService {
+  apiKey: string = '?api_key=RGAPI-86c8d3a8-fcd6-4c6d-ab8b-724301388830';
+  url: string = 'https://cors-anywhere.herokuapp.com/https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/';
 
   constructor(private http: HttpClient) {}
 
-  fetchSummoner() {
+  fetchSummoner(summonerName: string) {
     this.http
-      .get('https://cors-anywhere.herokuapp.com/https://na1.api.riotgames.com//lol/platform/v3/champion-rotations?api_key=RGAPI-b62fe3c1-e7cd-4301-85c2-25cc0f6f6bcd')
+      .get(this.url + summonerName + this.apiKey)
       .subscribe(summoner => {
         console.log(summoner);
       });
