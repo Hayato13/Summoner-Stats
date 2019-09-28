@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -7,6 +8,7 @@ import { HttpClient } from '@angular/common/http';
 export class ChampionsService {
   apiKey: string = '?api_key=RGAPI-d1f2ef01-b31a-41bb-9614-50292626f5c6';
   url: string = 'https://cors-anywhere.herokuapp.com/https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/';
+  activatedEmitter = new Subject<string>();
 
   constructor(private http: HttpClient) {}
 
