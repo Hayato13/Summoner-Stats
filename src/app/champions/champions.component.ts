@@ -1,5 +1,6 @@
 import { ChampionsService } from './champions.service';
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-champions',
@@ -14,9 +15,9 @@ export class ChampionsComponent implements OnInit {
   ngOnInit() {
   }
 
-  onSearch() {
+  onSearch(form: NgForm) {
     // this.championsService.fetchSummoner(summonerName);
-    this.summonerName = document.getElementById('summonerName').value;
+    this.summonerName = form.value.summonerName;
     console.log(this.championsService.fetchSummoner(this.summonerName));
   }
 }

@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ChampionsService {
-  apiKey: string = '?api_key=RGAPI-86c8d3a8-fcd6-4c6d-ab8b-724301388830';
+  apiKey: string = '?api_key=RGAPI-d1f2ef01-b31a-41bb-9614-50292626f5c6';
   url: string = 'https://cors-anywhere.herokuapp.com/https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/';
 
   constructor(private http: HttpClient) {}
