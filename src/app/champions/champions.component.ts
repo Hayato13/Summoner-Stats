@@ -10,9 +10,9 @@ import { NgForm } from '@angular/forms';
 export class ChampionsComponent implements OnInit {
   summonerName: string;
   summonerIconPath: string;
-  accountId: string;
+  matchHistory: {};
 
-  constructor(private championsService: ChampionsService) { }
+  constructor(public championsService: ChampionsService) { }
 
   ngOnInit() {
   }
@@ -21,7 +21,6 @@ export class ChampionsComponent implements OnInit {
     this.summonerName = form.value.summonerName;
     this.summonerIconPath = 'http://avatar.leagueoflegends.com/na1/' + this.summonerName + '.png';
     this.championsService.fetchSummoner(this.summonerName);
+    this.matchHistory = this.championsService.getMatchHistory();
   }
-
-
 }

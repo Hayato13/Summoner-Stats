@@ -14,4 +14,10 @@
 
 <div class="container">
   <img [src]="summonerIconPath" alt="Summoner Icon" heigh="100" width="100">
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let match of matchHistory">
+      <h1>{{ match.champion }}</h1>
+      <p>{{ match.season }}</p>
+    </li>
+  </ul>
 </div>
