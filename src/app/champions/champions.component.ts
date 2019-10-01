@@ -10,7 +10,7 @@ import { NgForm } from '@angular/forms';
 export class ChampionsComponent implements OnInit {
   summonerName: string;
   summonerIconPath: string;
-  matchHistory: {};
+  matchHistory: object[] = [];
 
   constructor(public championsService: ChampionsService) { }
 
@@ -20,7 +20,9 @@ export class ChampionsComponent implements OnInit {
   onSearch(form: NgForm) {
     this.summonerName = form.value.summonerName;
     this.summonerIconPath = 'http://avatar.leagueoflegends.com/na1/' + this.summonerName + '.png';
-    this.championsService.fetchSummoner(this.summonerName);
-    this.matchHistory = this.championsService.getMatchHistory();
+    this.championsService.fetchSummoner(this.summonerName)
+      .subscribe((matchHistoryResponse: object[]) => {
+        this.matchHistory.push(matchHistoryResponse);
+      });
   }
 }
