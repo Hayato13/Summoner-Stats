@@ -29,4 +29,9 @@ export class ChampionsComponent implements OnInit {
     this.searched = !this.searched;
     this.searchUnused = !this.searchUnused;
   }
+
+  reset() {
+    this.searched = !this.searched;
+    this.searchUnused = !this.searchUnused;
+  }
 }
