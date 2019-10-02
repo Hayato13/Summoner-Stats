@@ -12,7 +12,7 @@
   </div>
 </div>
 
-<div class="container">
+<div *ngIf="searched" class="container">
   <img [src]="summonerIconPath" alt="Summoner Icon" heigh="100" width="100">
   <ul class="list-group">
     <li class="list-group-item" *ngFor="let match of matchHistory">

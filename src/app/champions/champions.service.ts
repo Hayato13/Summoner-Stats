@@ -23,8 +23,4 @@ export class ChampionsService {
           })
         );
   }
-
-  getMatchHistory() {
-    return this.matchHistory;
-  }
 }
