@@ -12,6 +12,7 @@ export class ChampionsComponent implements OnInit {
   summonerIconPath: string;
   matchHistory: object[] = [];
   searched: boolean = false;
+  searchUnused: boolean = true;
 
   constructor(public championsService: ChampionsService) { }
 
@@ -26,5 +27,6 @@ export class ChampionsComponent implements OnInit {
         this.matchHistory.push(matchHistoryResponse);
       });
     this.searched = !this.searched;
+    this.searchUnused = !this.searchUnused;
   }
 }
