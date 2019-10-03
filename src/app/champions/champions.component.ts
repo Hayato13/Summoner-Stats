@@ -1,6 +1,7 @@
 import { ChampionsService } from './champions.service';
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import championData from '../../../ChampionItemInfo/champion.json';
 
 @Component({
   selector: 'app-champions',
@@ -13,6 +14,7 @@ export class ChampionsComponent implements OnInit {
   matchHistory: object[] = [];
   searched: boolean = false;
   searchUnused: boolean = true;
+  champions: any = championData;
 
   constructor(public championsService: ChampionsService) { }
 
@@ -28,10 +30,6 @@ export class ChampionsComponent implements OnInit {
       });
     this.searched = !this.searched;
     this.searchUnused = !this.searchUnused;
-  }
-
-  reset() {
-    this.searched = !this.searched;
-    this.searchUnused = !this.searchUnused;
+    console.log(this.champions[22]);
   }
 }

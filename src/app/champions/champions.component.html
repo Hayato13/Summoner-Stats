@@ -17,8 +17,8 @@
   <h1>{{ summonerName }}</h1>
   <ul class="list-group">
     <li class="list-group-item" *ngFor="let match of matchHistory">
-      <h3>{{ match.champion }}</h3>
-      <p>{{ match.season }}</p>
+      <h3>{{ champions[match.champion] }}</h3>
+      <p> Season {{ match.season }}</p>
       <p>{{ match.lane }}</p>
     </li>
   </ul>
