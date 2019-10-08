@@ -30,6 +30,5 @@ export class ChampionsComponent implements OnInit {
       });
     this.searched = !this.searched;
     this.searchUnused = !this.searchUnused;
-    console.log(this.champions[22]);
   }
 }
