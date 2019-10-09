@@ -15,6 +15,7 @@ export class ChampionsComponent implements OnInit {
   searched: boolean = false;
   searchUnused: boolean = true;
   champions: any = championData;
+  matchId: [] = [];
 
   constructor(public championsService: ChampionsService) { }
 
@@ -27,6 +28,14 @@ export class ChampionsComponent implements OnInit {
     this.championsService.fetchSummoner(this.summonerName)
       .subscribe((matchHistoryResponse: object[]) => {
         this.matchHistory.push(matchHistoryResponse);
+      });
+    this.championsService.fetchMatchId(this.summonerName)
+      .subscribe((matchHistoryResponse: []) => {
+        this.matchId.push(matchHistoryResponse);
+        this.championsService.fetchMatchData(this.matchId)
+          .subscribe((matchStats) => {
+            console.log(matchStats);
+          });
       });
     this.searched = !this.searched;
     this.searchUnused = !this.searchUnused;
