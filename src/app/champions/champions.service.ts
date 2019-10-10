@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { mergeMap } from 'rxjs/operators';
+import { mergeMap, map } from 'rxjs/operators';
 import { ConsoleReporter } from 'jasmine';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChampionsService {
-  apiKey: string = '?api_key=RGAPI-71a6228e-763d-4580-add8-5867e7377b2d';
+  apiKey: string = '?api_key=RGAPI-9bb81ce5-6e1b-4d94-95e6-33bf188b4433';
   summonerUrl: string = 'https://cors-anywhere.herokuapp.com/https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/';
   matchUrl: string = 'https://cors-anywhere.herokuapp.com/https://na1.api.riotgames.com//lol/match/v4/matchlists/by-account/';
   matchStats: string = 'https://cors-anywhere.herokuapp.com/https://na1.api.riotgames.com/lol/match/v4/matches/';
@@ -38,20 +38,18 @@ export class ChampionsService {
             for (const history of matchHistory.matches) {
               this.matchId.push(history.gameId);
             }
-            this.matchId.splice(56 , 56);
+            this.matchId.splice((this.matchId.length / 2) , (this.matchId.length / 2));
             return this.matchId;
           })
         );
   }
 
-  fetchMatchData(matchId: number[]) {
-    for ( const matchNum of matchId) {
-      return this.http
-      .get(this.matchStats + matchNum + this.apiKey).pipe(
-        mergeMap(matchStatistics => {
-          console.log (matchStatistics);
-        }));
+  fetchMatchData(matchId: number) {
+    return this.http
+    .get(this.matchStats + matchId + this.apiKey).pipe(
+      map(matchStatistics => {
+        return matchStatistics;
+      }));
     }
-  }
 
 }
