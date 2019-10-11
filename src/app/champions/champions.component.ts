@@ -16,6 +16,9 @@ export class ChampionsComponent implements OnInit {
   searchUnused: boolean = true;
   champions: any = championData;
   matchId: object[] = [];
+  participantIdentities: object[] = [];
+  participants: object[] = [];
+
 
   constructor(public championsService: ChampionsService) { }
 
@@ -35,10 +38,24 @@ export class ChampionsComponent implements OnInit {
         matchId.push(matchHistoryResponse);
         this.championsService.fetchMatchData(matchId[0])
           .subscribe((matchStats: {}) => {
-            console.log(matchStats);
+            this.participantIdentities = matchStats.participantIdentities;
+            this.participants = matchStats.participants;
+            // console.log(this.participantIdentities);
+            // console.log(this.participants);
+            this.matchSummonerName();
           });
       });
     this.searched = !this.searched;
     this.searchUnused = !this.searchUnused;
   }
+
+  matchSummonerName() {
+    for (const name of this.participantIdentities) {
+      if (name.player.summonerName === this.summonerName) {
+        console.log(this.participants[name.participantId]);
+      }
+    }
+  }
+
+
 }

@@ -7,7 +7,7 @@ import { ConsoleReporter } from 'jasmine';
   providedIn: 'root'
 })
 export class ChampionsService {
-  apiKey: string = '?api_key=RGAPI-9bb81ce5-6e1b-4d94-95e6-33bf188b4433';
+  apiKey: string = '?api_key=RGAPI-8120fdd0-37e4-4003-a277-1835f5ee9498';
   summonerUrl: string = 'https://cors-anywhere.herokuapp.com/https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/';
   matchUrl: string = 'https://cors-anywhere.herokuapp.com/https://na1.api.riotgames.com//lol/match/v4/matchlists/by-account/';
   matchStats: string = 'https://cors-anywhere.herokuapp.com/https://na1.api.riotgames.com/lol/match/v4/matches/';
