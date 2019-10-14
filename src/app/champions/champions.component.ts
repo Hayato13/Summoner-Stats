@@ -18,6 +18,7 @@ export class ChampionsComponent implements OnInit {
   matchId: object[] = [];
   participantIdentities: object[] = [];
   participants: object[] = [];
+  participantStats: object[] = [];
 
 
   constructor(public championsService: ChampionsService) { }
@@ -51,8 +52,10 @@ export class ChampionsComponent implements OnInit {
 
   matchSummonerName() {
     for (const name of this.participantIdentities) {
-      if (name.player.summonerName === this.summonerName) {
-        console.log(this.participants[name.participantId]);
+      if (name.player.summonerName.toLowerCase() === this.summonerName.toLowerCase()) {
+        console.log(this.participants);
+        this.participantStats.push(this.participants[name.participantId]);
+        console.log(this.participantStats);
       }
     }
   }
