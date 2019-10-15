@@ -14,12 +14,11 @@
 
 <div *ngIf="searched" class="container">
   <img [src]="summonerIconPath" alt="Summoner Icon" heigh="100" width="100">
-  <h1>{{ summonerName }}</h1>
+  <h1>{{ summonerObject }}</h1>
   <ul class="list-group">
-    <li class="list-group-item" *ngFor="let match of matchHistory">
-      <h3>{{ champions[match.champion] }}</h3>
-      <p> Season {{ match.season }}</p>
-      <p>{{ match.lane }}</p>
+    <li class="list-group-item" *ngFor="let stats of participantStats">
+      <h3>{{ champions[stats.championId] }}</h3>
+      <p>KDA: {{ stats.stats.kills }}/{{ stats.stats.deaths }}/{{ stats.stats.assists }} </p>
     </li>
   </ul>
 </div>
