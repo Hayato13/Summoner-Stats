@@ -20,6 +20,7 @@ export class ChampionsComponent implements OnInit {
   participants: object[] = [];
   participantStats: object[] = [];
   summonerObject: object;
+  summonerIcon: number[] = [];
 
 
   constructor(public championsService: ChampionsService) { }
@@ -29,7 +30,6 @@ export class ChampionsComponent implements OnInit {
 
   onSearch(form: NgForm) {
     this.summonerName = form.value.summonerName;
-    this.summonerIconPath = 'http://avatar.leagueoflegends.com/na1/' + this.summonerName + '.png';
     this.championsService.fetchSummoner(this.summonerName)
       .subscribe((matchHistoryResponse: object[]) => {
         this.matchHistory.push(matchHistoryResponse);
@@ -52,11 +52,12 @@ export class ChampionsComponent implements OnInit {
   }
 
   matchSummonerName() {
-
     for (const name of this.participantIdentities) {
       if (name.player.summonerName.toLowerCase() === this.summonerName.toLowerCase()) {
         this.summonerObject = this.participantIdentities[name.participantId - 1].player.summonerName;
         this.participantStats.push(this.participants[name.participantId - 1]);
+        this.summonerIcon.push(this.participantIdentities[name.participantId - 1].player.profileIcon);
+        this.summonerIconPath = 'http://ddragon.leagueoflegends.com/cdn/9.20.1/img/profileicon/' + this.summonerIcon[0] + '.png';
       }
     }
   }
