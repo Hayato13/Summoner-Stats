@@ -21,6 +21,8 @@ export class ChampionsComponent implements OnInit {
   participantStats: object[] = [];
   summonerObject: object;
   summonerIcon: number[] = [];
+  matchStatsObject: object[] = [];
+  matchStats;
 
 
   constructor(public championsService: ChampionsService) { }
@@ -40,9 +42,11 @@ export class ChampionsComponent implements OnInit {
         matchId.push(matchHistoryResponse);
         this.championsService.fetchMatchData(matchId[0])
           .subscribe((matchStats: {}) => {
+            // this.matchStats = matchStats;
             this.participantIdentities = matchStats.participantIdentities;
+            this.participantIdentities.gameId = matchStats.gameId;
             this.participants = matchStats.participants;
-            // console.log(this.participantIdentities);
+            console.log(this.participantIdentities);
             // console.log(this.participants);
             this.matchSummonerName();
           });
@@ -52,6 +56,13 @@ export class ChampionsComponent implements OnInit {
   }
 
   matchSummonerName() {
+    // this.matchStatsObject.push({gameId : this.matchStats.gameId, participantIdentities : this.matchStats.participantIdentities});
+    // this.matchStatsObject.sort((a, b) => b.gameId - a.gameId);
+    // for (const id of this.matchStatsObject) {
+    //   this.participantIdentities.push(id.participantIdentities);
+    // }
+    // this.participantIdentities.splice((this.participantIdentities.length / 4) , (this.participantIdentities.length / 4));
+    // console.log(this.participantIdentities);
     for (const name of this.participantIdentities) {
       if (name.player.summonerName.toLowerCase() === this.summonerName.toLowerCase()) {
         this.summonerObject = this.participantIdentities[name.participantId - 1].player.summonerName;
