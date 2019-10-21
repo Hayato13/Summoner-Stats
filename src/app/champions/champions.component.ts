@@ -23,6 +23,7 @@ export class ChampionsComponent implements OnInit {
   summonerIcon: number[] = [];
   matchStatsObject: object[] = [];
   matchStats;
+  participantIdentitiesArray: object[] = [];
 
 
   constructor(public championsService: ChampionsService) { }
@@ -37,16 +38,17 @@ export class ChampionsComponent implements OnInit {
         this.matchHistory.push(matchHistoryResponse);
       });
     this.championsService.fetchMatchId(this.summonerName)
-      .subscribe((matchHistoryResponse: []) => {
-        const matchId = [];
-        matchId.push(matchHistoryResponse);
-        this.championsService.fetchMatchData(matchId[0])
+      .subscribe((matchHistoryResponse: number) => {
+        const matchId = matchHistoryResponse;
+        console.log(matchId);
+        this.championsService.fetchMatchData(matchId)
           .subscribe((matchStats: {}) => {
+            console.log(matchId);
             // this.matchStats = matchStats;
             this.participantIdentities = matchStats.participantIdentities;
             this.participantIdentities.gameId = matchStats.gameId;
+            this.participantIdentitiesArray.push(matchStats);
             this.participants = matchStats.participants;
-            console.log(this.participantIdentities);
             // console.log(this.participants);
             this.matchSummonerName();
           });
