@@ -20,7 +20,7 @@ export class ChampionsComponent implements OnInit {
   participants: object[] = [];
   participantStats: object[] = [];
   summonerObject: object;
-  summonerIcon: number[] = [];
+  summonerIcon: number;
   matchStatsObject: object[] = [];
   matchStats;
   participantIdentitiesArray: object[] = [];
@@ -40,37 +40,29 @@ export class ChampionsComponent implements OnInit {
     this.championsService.fetchMatchId(this.summonerName)
       .subscribe((matchHistoryResponse: number) => {
         const matchId = matchHistoryResponse;
-        console.log(matchId);
         this.championsService.fetchMatchData(matchId)
           .subscribe((matchStats: {}) => {
-            console.log(matchId);
-            // this.matchStats = matchStats;
             this.participantIdentities = matchStats.participantIdentities;
             this.participantIdentities.gameId = matchStats.gameId;
-            this.participantIdentitiesArray.push(matchStats);
             this.participants = matchStats.participants;
-            // console.log(this.participants);
-            this.matchSummonerName();
+            this.participants.gameId = matchStats.gameId;
+            this.matchSummonerName(this.participantIdentities);
           });
       });
     this.searched = !this.searched;
     this.searchUnused = !this.searchUnused;
   }
 
-  matchSummonerName() {
-    // this.matchStatsObject.push({gameId : this.matchStats.gameId, participantIdentities : this.matchStats.participantIdentities});
-    // this.matchStatsObject.sort((a, b) => b.gameId - a.gameId);
-    // for (const id of this.matchStatsObject) {
-    //   this.participantIdentities.push(id.participantIdentities);
-    // }
-    // this.participantIdentities.splice((this.participantIdentities.length / 4) , (this.participantIdentities.length / 4));
-    // console.log(this.participantIdentities);
-    for (const name of this.participantIdentities) {
+  matchSummonerName(participantIds) {
+    for (const name of participantIds) {
       if (name.player.summonerName.toLowerCase() === this.summonerName.toLowerCase()) {
-        this.summonerObject = this.participantIdentities[name.participantId - 1].player.summonerName;
+        this.summonerObject = participantIds[name.participantId - 1].player.summonerName;
+        this.participants[name.participantId - 1].gameId = participantIds.gameId;
+        this.participants[name.participantId - 1].profileIcon = participantIds[name.participantId - 1].player.profileIcon;
         this.participantStats.push(this.participants[name.participantId - 1]);
-        this.summonerIcon.push(this.participantIdentities[name.participantId - 1].player.profileIcon);
-        this.summonerIconPath = 'http://ddragon.leagueoflegends.com/cdn/9.20.1/img/profileicon/' + this.summonerIcon[0] + '.png';
+        this.participantStats.sort((a , b) => b.gameId - a.gameId);
+        this.summonerIcon = this.participantStats[0].profileIcon;
+        this.summonerIconPath = 'http://ddragon.leagueoflegends.com/cdn/9.20.1/img/profileicon/' + this.summonerIcon + '.png';
       }
     }
   }
