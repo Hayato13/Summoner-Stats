@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { mergeMap, map } from 'rxjs/operators';
-import { ConsoleReporter } from 'jasmine';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ChampionsService {
-  apiKey: string = '?api_key=RGAPI-ab6d13e9-bc73-4199-b59e-4bf857046c08';
+  apiKey: string = '?api_key=RGAPI-d8069fca-dfa2-4e49-8c1a-6917cb1c85c4';
   summonerUrl: string = 'https://cors-anywhere.herokuapp.com/https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/';
   matchUrl: string = 'https://cors-anywhere.herokuapp.com/https://na1.api.riotgames.com//lol/match/v4/matchlists/by-account/';
   matchStats: string = 'https://cors-anywhere.herokuapp.com/https://na1.api.riotgames.com/lol/match/v4/matches/';

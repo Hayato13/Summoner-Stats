@@ -15,10 +15,21 @@
 <div *ngIf="searched" class="container">
   <img [src]="summonerIconPath" alt="Summoner Icon" heigh="100" width="100" *ngIf="summonerIconPath">
   <h1>{{ summonerObject }}</h1>
-  <ul class="list-group">
-    <li class="list-group-item" *ngFor="let stats of participantStats">
-      <h3>{{ champions[stats.championId] }}</h3>
-      <p>KDA: {{ stats.stats.kills }}/{{ stats.stats.deaths }}/{{ stats.stats.assists }} </p>
-    </li>
-  </ul>
+  <div class="list-group">
+    <div class="list-group-item" *ngFor="let stats of participantStats">
+        <h3>{{ champions[stats.championId] }}</h3>
+        <p>KDA: {{ stats.stats.kills }}/{{ stats.stats.deaths }}/{{ stats.stats.assists }} </p>
+        <div class="d-flex">
+            <div class="d-flex p-2">
+              One of three columns
+            </div>
+            <div class="d-flex p-2">  
+              One of three columns
+            </div>
+            <div class="d-flex p-2">
+              One of three columns
+            </div>
+        </div>
+    </div> 
+  </div>  
 </div>

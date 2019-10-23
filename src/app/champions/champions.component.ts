@@ -61,6 +61,7 @@ export class ChampionsComponent implements OnInit {
         this.participants[name.participantId - 1].profileIcon = participantIds[name.participantId - 1].player.profileIcon;
         this.participantStats.push(this.participants[name.participantId - 1]);
         this.participantStats.sort((a , b) => b.gameId - a.gameId);
+        console.log(this.participantStats);
         this.summonerIcon = this.participantStats[0].profileIcon;
         this.summonerIconPath = 'http://ddragon.leagueoflegends.com/cdn/9.20.1/img/profileicon/' + this.summonerIcon + '.png';
       }
