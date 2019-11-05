@@ -24,6 +24,21 @@ export class ChampionsComponent implements OnInit {
   matchStatsObject: object[] = [];
   matchStats;
   participantIdentitiesArray: object[] = [];
+  item0: number;
+  item1: number;
+  item2: number;
+  item3: number;
+  item4: number;
+  item5: number;
+  item6: number;
+  itemArray: number[] = [];
+  itemImgSrc0: string = '../../../assets/img/img/item/';
+  itemImgSrc1: string = '../../../assets/img/img/item/';
+  itemImgSrc2: string = '../../../assets/img/img/item/';
+  itemImgSrc3: string = '../../../assets/img/img/item/';
+  itemImgSrc4: string = '../../../assets/img/img/item/';
+  itemImgSrc5: string = '../../../assets/img/img/item/';
+  itemImgSrc6: string = '../../../assets/img/img/item/';
 
 
   constructor(public championsService: ChampionsService) { }
@@ -57,6 +72,8 @@ export class ChampionsComponent implements OnInit {
     for (const name of participantIds) {
       if (name.player.summonerName.toLowerCase() === this.summonerName.toLowerCase()) {
         this.summonerObject = participantIds[name.participantId - 1].player.summonerName;
+        console.log(participantIds);
+        this.item0 = this.participants[name.participantId - 1].stats.item0;
         this.participants[name.participantId - 1].gameId = participantIds.gameId;
         this.participants[name.participantId - 1].profileIcon = participantIds[name.participantId - 1].player.profileIcon;
         this.participantStats.push(this.participants[name.participantId - 1]);
