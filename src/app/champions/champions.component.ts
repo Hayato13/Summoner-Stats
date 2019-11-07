@@ -24,14 +24,6 @@ export class ChampionsComponent implements OnInit {
   matchStatsObject: object[] = [];
   matchStats;
   participantIdentitiesArray: object[] = [];
-  item0: number;
-  item1: number;
-  item2: number;
-  item3: number;
-  item4: number;
-  item5: number;
-  item6: number;
-  itemArray: number[] = [];
   itemImgSrc0: string = '../../../assets/img/img/item/';
   itemImgSrc1: string = '../../../assets/img/img/item/';
   itemImgSrc2: string = '../../../assets/img/img/item/';
@@ -39,6 +31,7 @@ export class ChampionsComponent implements OnInit {
   itemImgSrc4: string = '../../../assets/img/img/item/';
   itemImgSrc5: string = '../../../assets/img/img/item/';
   itemImgSrc6: string = '../../../assets/img/img/item/';
+  defaultIcon: string = '../../../assets/img/img/profileicon/';
 
 
   constructor(public championsService: ChampionsService) { }
