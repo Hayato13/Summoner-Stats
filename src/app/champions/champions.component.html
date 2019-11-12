@@ -22,6 +22,10 @@
           <div class="col-sm">
             <h3>{{ champions[stats.championId] }}</h3>
             <img src={{championIcon}}{{champions[stats.championId]}}.png height="75" width="75">
+            <div class="d-flex flex-wrap">
+              <img src={{spellIcon}}{{stats.spell1Id}}.png height="37.5" width="37.5">
+              <img src={{spellIcon}}{{stats.spell2Id}}.png height="37.5" width="37.5">
+            </div>
             <p>KDA: {{ stats.stats.kills }}/{{ stats.stats.deaths }}/{{ stats.stats.assists }} </p>
           </div>
           <div class="col-sm">

@@ -33,6 +33,7 @@ export class ChampionsComponent implements OnInit {
   itemImgSrc6: string = '../../../assets/img/img/item/';
   defaultIcon: string = '../../../assets/img/img/profileicon/';
   championIcon: string = '../../../assets/img/img/champion/';
+  spellIcon: string = '../../../assets/img/img/spell/';
 
 
   constructor(public championsService: ChampionsService) { }
