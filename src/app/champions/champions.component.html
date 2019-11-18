@@ -2,10 +2,10 @@
   <div class="row">
     <div class="col-xs-12 col-sm-10 col-md-8 col-sm-offset-1 col-md-offset-2">
       <form (ngSubmit)="onSearch(f)" #f="ngForm">
-          <div class="form-group">
-            <label for="summonerName">Summoner Name</label>
-            <input type="text" name="summonerName" id="summonerName" class="form-control" ngModel>
-          </div>
+        <div class="form-group">
+          <label for="summonerName">Summoner Name</label>
+          <input type="text" name="summonerName" id="summonerName" class="form-control" ngModel>
+        </div>
         <button class="btn btn-primary" type="submit">Search</button>
       </form>
     </div>
@@ -28,44 +28,60 @@
             </div>
             <p>KDA: {{ stats.stats.kills }}/{{ stats.stats.deaths }}/{{ stats.stats.assists }} </p>
           </div>
-          <div class="col-sm">
+          <div class="col-sm my-auto">
             <div class="container">
-              <div class="row">
-                <div class="col-">
-                    <img src={{itemImgSrc0}}{{stats.stats.item0}}.png alt="Item Icon 0" class="rounded border border-dark" *ngIf="stats.stats.item0" height="50px" width="50px">
-                    <img src={{defaultIcon}}29.png alt="Summoner Icon" class="rounded border border-dark" *ngIf="!stats.stats.item0" height="50px" width="50px">
+              <div class="text-center">
+                <div class="text-center row">
+                  <div class="col-">
+                    <img src={{itemImgSrc0}}{{stats.stats.item0}}.png alt="Item Icon 0"
+                      class="rounded border border-dark" *ngIf="stats.stats.item0" height="50px" width="50px">
+                    <img src={{defaultIcon}}29.png alt="Summoner Icon" class="rounded border border-dark"
+                      *ngIf="!stats.stats.item0" height="50px" width="50px">
+                  </div>
+                  <div class="col-">
+                    <img src={{itemImgSrc1}}{{stats.stats.item1}}.png alt="Item Icon 1"
+                      class="rounded border border-dark" *ngIf="stats.stats.item1" height="50px" width="50px">
+                    <img src={{defaultIcon}}29.png alt="Summoner Icon" class="rounded border border-dark"
+                      *ngIf="!stats.stats.item1" height="50px" width="50px">
+                  </div>
+                  <div class="col-">
+                    <img src={{itemImgSrc2}}{{stats.stats.item2}}.png alt="Item Icon 2"
+                      class="rounded border border-dark" *ngIf="stats.stats.item2" height="50px" width="50px">
+                    <img src={{defaultIcon}}29.png alt="Summoner Icon" class="rounded border border-dark"
+                      *ngIf="!stats.stats.item2" height="50px" width="50px">
+                  </div>
                 </div>
-                <div class="col-">
-                    <img src={{itemImgSrc1}}{{stats.stats.item1}}.png alt="Item Icon 1" class="rounded border border-dark" *ngIf="stats.stats.item1" height="50px" width="50px">
-                    <img src={{defaultIcon}}29.png alt="Summoner Icon" class="rounded border border-dark" *ngIf="!stats.stats.item1" height="50px" width="50px">
-                </div>
-                <div class="col-">
-                    <img src={{itemImgSrc2}}{{stats.stats.item2}}.png alt="Item Icon 2" class="rounded border border-dark" *ngIf="stats.stats.item2" height="50px" width="50px">
-                    <img src={{defaultIcon}}29.png alt="Summoner Icon" class="rounded border border-dark" *ngIf="!stats.stats.item2" height="50px" width="50px">
+              </div>
+              <div class="text-center">
+                <div class="text-center row">
+                  <div class="col-">
+                    <img src={{itemImgSrc3}}{{stats.stats.item3}}.png alt="Item Icon 3"
+                      class="rounded border border-dark" *ngIf="stats.stats.item3" height="50px" width="50px">
+                    <img src={{defaultIcon}}29.png alt="Summoner Icon" class="rounded border border-dark"
+                      *ngIf="!stats.stats.item3" height="50px" width="50px">
+                  </div>
+                  <div class="col-">
+                    <img src={{itemImgSrc4}}{{stats.stats.item4}}.png alt="Item Icon 4"
+                      class="rounded border border-dark" *ngIf="stats.stats.item4" height="50px" width="50px">
+                    <img src={{defaultIcon}}29.png alt="Summoner Icon" class="rounded border border-dark"
+                      *ngIf="!stats.stats.item4" height="50px" width="50px">
+                  </div>
+                  <div class="col-">
+                    <img src={{itemImgSrc5}}{{stats.stats.item5}}.png alt="Item Icon 5"
+                      class="rounded border border-dark" *ngIf="stats.stats.item5" height="50px" width="50px">
+                    <img src={{defaultIcon}}29.png alt="Summoner Icon" class="rounded border border-dark"
+                      *ngIf="!stats.stats.item5" height="50px" width="50px">
+                  </div>
+                  <div class="col- trinket">
+                    <img src={{itemImgSrc5}}{{stats.stats.item6}}.png alt="Item Icon 6"
+                      class="rounded border border-dark" *ngIf="stats.stats.item6" height="50px" width="50px">
+                  </div>
                 </div>
               </div>
             </div>
-            <div class="container">
-              <div class="row">
-                <div class="col-">
-                    <img src={{itemImgSrc3}}{{stats.stats.item3}}.png alt="Item Icon 3" class="rounded border border-dark" *ngIf="stats.stats.item3" height="50px" width="50px">
-                    <img src={{defaultIcon}}29.png alt="Summoner Icon" class="rounded border border-dark" *ngIf="!stats.stats.item3" height="50px" width="50px">
-                </div>
-                <div class="col-">
-                    <img src={{itemImgSrc4}}{{stats.stats.item4}}.png alt="Item Icon 4" class="rounded border border-dark" *ngIf="stats.stats.item4" height="50px" width="50px">
-                    <img src={{defaultIcon}}29.png alt="Summoner Icon" class="rounded border border-dark" *ngIf="!stats.stats.item4" height="50px" width="50px">
-                </div>
-                <div class="col-">
-                    <img src={{itemImgSrc5}}{{stats.stats.item5}}.png alt="Item Icon 5" class="rounded border border-dark" *ngIf="stats.stats.item5" height="50px" width="50px">
-                    <img src={{defaultIcon}}29.png alt="Summoner Icon" class="rounded border border-dark" *ngIf="!stats.stats.item5" height="50px" width="50px">
-                </div>
-                <div class="col- trinket">
-                    <img src={{itemImgSrc5}}{{stats.stats.item6}}.png alt="Item Icon 6" class="rounded border border-dark" *ngIf="stats.stats.item6" height="50px" width="50px">
-                </div>
-              </div>
-            </div>
+
           </div>
-          <div class="col-sm">
+          <div class="col-sm my-auto">
             <div>
               Gold: {{ stats.stats.goldEarned }}
             </div>
@@ -73,8 +89,8 @@
               Minions: {{ stats.stats.neutralMinionsKilled }}
             </div>
           </div>
-    </div>
+        </div>
       </div>
-    </div> 
-  </div>  
+    </div>
+  </div>
 </div>
