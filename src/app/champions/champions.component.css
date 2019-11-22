@@ -1,3 +1,27 @@
 .trinket {
-    position: relative; top: -25px;
+    display: inline-block;
+}
+
+.column1 {
+    text-align: center;
+    left: -100px;
+}
+
+.column3 {
+    text-align: center;
+    margin: auto;
+}
+
+.column2 {
+    margin: auto;
+}
+
+.item0, .item3 {
+    display: inline-block;
+    margin-left: auto;
+}
+
+.item2, .item5 {
+    display: inline-block;
+    margin-right: auto;
 }
