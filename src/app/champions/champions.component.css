@@ -4,7 +4,7 @@
 
 .column1 {
     text-align: center;
-    left: -100px;
+    margin-left: -50px;
 }
 
 .column3 {
@@ -24,4 +24,8 @@
 .item2, .item5 {
     display: inline-block;
     margin-right: auto;
+}
+
+.profile {
+    margin-top: 50px;
 }
