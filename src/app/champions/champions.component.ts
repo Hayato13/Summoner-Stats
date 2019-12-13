@@ -22,7 +22,17 @@ export class ChampionsComponent implements OnInit {
   summonerObject: object;
   summonerIcon: number;
   matchStatsObject: object[] = [];
-  matchStats;
+  matchStats: object[] = [];
+  teammate1: object;
+  teammate2: object;
+  teammate3: object;
+  teammate4: object;
+  teammate5: object;
+  opponent1: object;
+  opponent2: object;
+  opponent3: object;
+  opponent4: object;
+  opponent5: object;
   participantIdentitiesArray: object[] = [];
   itemImgSrc0: string = '../../../assets/img/img/item/';
   itemImgSrc1: string = '../../../assets/img/img/item/';
@@ -57,6 +67,25 @@ export class ChampionsComponent implements OnInit {
             this.participants = matchStats.participants;
             this.participants.gameId = matchStats.gameId;
             this.matchSummonerName(this.participantIdentities);
+            this.participants.sort((a, b) => b.gameId - a.gameId);
+            this.participantIdentities.sort((a, b) => b.gameId - a.gameId);
+            for (const name of this.participantIdentities) {
+              if (name.player.summonerName.toLowerCase() === this.summonerName.toLowerCase()) {
+                this.participants[name.participantId - 1].stats.blue1 = this.participantIdentities[0].player.summonerName;
+                this.participants[name.participantId - 1].stats.blue2 = this.participantIdentities[1].player.summonerName;
+                this.participants[name.participantId - 1].stats.blue3 = this.participantIdentities[2].player.summonerName;
+                this.participants[name.participantId - 1].stats.blue4 = this.participantIdentities[3].player.summonerName;
+                this.participants[name.participantId - 1].stats.blue5 = this.participantIdentities[4].player.summonerName;
+                this.participants[name.participantId - 1].stats.red1 = this.participantIdentities[5].player.summonerName;
+                this.participants[name.participantId - 1].stats.red2 = this.participantIdentities[6].player.summonerName;
+                this.participants[name.participantId - 1].stats.red3 = this.participantIdentities[7].player.summonerName;
+                this.participants[name.participantId - 1].stats.red4 = this.participantIdentities[8].player.summonerName;
+                this.participants[name.participantId - 1].stats.red5 = this.participantIdentities[9].player.summonerName;
+
+              }
+            }
+            // console.log(this.participants);
+            // console.log(this.participantIdentities);
           });
       });
     this.searched = !this.searched;
@@ -67,8 +96,6 @@ export class ChampionsComponent implements OnInit {
     for (const name of participantIds) {
       if (name.player.summonerName.toLowerCase() === this.summonerName.toLowerCase()) {
         this.summonerObject = participantIds[name.participantId - 1].player.summonerName;
-        console.log(participantIds);
-        this.item0 = this.participants[name.participantId - 1].stats.item0;
         this.participants[name.participantId - 1].gameId = participantIds.gameId;
         this.participants[name.participantId - 1].profileIcon = participantIds[name.participantId - 1].player.profileIcon;
         this.participantStats.push(this.participants[name.participantId - 1]);
@@ -79,6 +106,4 @@ export class ChampionsComponent implements OnInit {
       }
     }
   }
-
-
 }

@@ -13,7 +13,8 @@
 </div>
 
 <div *ngIf="searched" class="container">
-  <img class="rounded border border-dark profile" [src]="summonerIconPath" alt="Summoner Icon" height="100" width="100" *ngIf="summonerIconPath">
+  <img class="rounded border border-dark profile" [src]="summonerIconPath" alt="Summoner Icon" height="100" width="100"
+    *ngIf="summonerIconPath">
   <h1>{{ summonerObject }}</h1>
 
   <div class="list-group">
@@ -21,7 +22,7 @@
       'list-group-item-info' : stats.stats.win == true,
       'list-group-item-danger' : stats.stats.win == false
     }">
-      <div class="container" >
+      <div class="container">
         <div class="row">
           <div class="col-sm column1">
             <h3>{{ champions[stats.championId] }}</h3>
@@ -31,7 +32,7 @@
                 <img src={{spellIcon}}{{stats.spell1Id}}.png height="37.5" width="37.5">
                 <img src={{spellIcon}}{{stats.spell2Id}}.png height="37.5" width="37.5">
               </div>
-              <p>KDA: {{ stats.stats.kills }}/{{ stats.stats.deaths }}/{{ stats.stats.assists }} </p>
+              <p>KDA: {{ stats.stats.kills }}/{{ stats.stats.deaths }}/{{ stats.stats.assists }}</p>
             </div>
           </div>
 
@@ -96,13 +97,27 @@
               Minions: {{ stats.stats.neutralMinionsKilled }}
             </div>
           </div>
-          <div class="col-sm column3">
-            <div>
-              MATCH PARTICIPANTS GO HERE
+          <div class="col-sm">
+            <div class="container">
+              <div class="row">
+                <div class="col-">
+                  <div>{{ stats.stats.blue1 }}</div>
+                  <div>{{ stats.stats.blue2 }}</div>
+                  <div>{{ stats.stats.blue3 }}</div>
+                  <div>{{ stats.stats.blue4 }}</div>
+                  <div>{{ stats.stats.blue5 }}</div>
+                </div>
+                <div class="col-">
+                  <div>{{ stats.stats.red1 }}</div>
+                  <div>{{ stats.stats.red2 }}</div>
+                  <div>{{ stats.stats.red3 }}</div>
+                  <div>{{ stats.stats.red4 }}</div>
+                  <div>{{ stats.stats.red5 }}</div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-</div>
