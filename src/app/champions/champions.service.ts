@@ -6,7 +6,7 @@ import { mergeMap, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ChampionsService {
-  apiKey: string = '?api_key=RGAPI-f0ad07ed-891d-4964-91e6-60398e4f1775';
+  apiKey: string = '?api_key=RGAPI-23015241-e9a5-4f24-8d78-18061c2c2983';
   summonerUrl: string = 'https://cors-anywhere.herokuapp.com/https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/';
   matchUrl: string = 'https://cors-anywhere.herokuapp.com/https://na1.api.riotgames.com//lol/match/v4/matchlists/by-account/';
   matchStats: string = 'https://cors-anywhere.herokuapp.com/https://na1.api.riotgames.com/lol/match/v4/matches/';
