@@ -102,6 +102,57 @@ export class ChampionsComponent implements OnInit {
     this.searchUnused = !this.searchUnused;
   }
 
+  onClick(summonerName) {
+    this.summonerName = summonerName;
+    this.championsService.fetchSummoner(this.summonerName)
+      .subscribe((matchHistoryResponse: object[]) => {
+        this.matchHistory.push(matchHistoryResponse);
+      });
+    this.championsService.fetchMatchId(this.summonerName)
+      .subscribe((matchHistoryResponse: number) => {
+        const matchId = matchHistoryResponse;
+        this.championsService.fetchMatchData(matchId)
+          .subscribe((matchStats: {}) => {
+            this.participantIdentities = matchStats.participantIdentities;
+            this.participantIdentities.gameId = matchStats.gameId;
+            this.participants = matchStats.participants;
+            this.participants.gameId = matchStats.gameId;
+            this.matchSummonerName(this.participantIdentities);
+            this.participants.sort((a, b) => b.gameId - a.gameId);
+            this.participantIdentities.sort((a, b) => b.gameId - a.gameId);
+            for (const name of this.participantIdentities) {
+              if (name.player.summonerName.toLowerCase() === this.summonerName.toLowerCase()) {
+                this.participants[name.participantId - 1].stats.blue1 = this.participantIdentities[0].player.summonerName;
+                this.participants[name.participantId - 1].stats.bchamp1 = this.participants[0].championId;
+                this.participants[name.participantId - 1].stats.blue2 = this.participantIdentities[1].player.summonerName;
+                this.participants[name.participantId - 1].stats.bchamp2 = this.participants[1].championId;
+                this.participants[name.participantId - 1].stats.blue3 = this.participantIdentities[2].player.summonerName;
+                this.participants[name.participantId - 1].stats.bchamp3 = this.participants[2].championId;
+                this.participants[name.participantId - 1].stats.blue4 = this.participantIdentities[3].player.summonerName;
+                this.participants[name.participantId - 1].stats.bchamp4 = this.participants[3].championId;
+                this.participants[name.participantId - 1].stats.blue5 = this.participantIdentities[4].player.summonerName;
+                this.participants[name.participantId - 1].stats.bchamp5 = this.participants[4].championId;
+                this.participants[name.participantId - 1].stats.red1 = this.participantIdentities[5].player.summonerName;
+                this.participants[name.participantId - 1].stats.rchamp1 = this.participants[5].championId;
+                this.participants[name.participantId - 1].stats.red2 = this.participantIdentities[6].player.summonerName;
+                this.participants[name.participantId - 1].stats.rchamp2 = this.participants[6].championId;
+                this.participants[name.participantId - 1].stats.red3 = this.participantIdentities[7].player.summonerName;
+                this.participants[name.participantId - 1].stats.rchamp3 = this.participants[7].championId;
+                this.participants[name.participantId - 1].stats.red4 = this.participantIdentities[8].player.summonerName;
+                this.participants[name.participantId - 1].stats.rchamp4 = this.participants[8].championId;
+                this.participants[name.participantId - 1].stats.red5 = this.participantIdentities[9].player.summonerName;
+                this.participants[name.participantId - 1].stats.rchamp5 = this.participants[9].championId;
+
+              }
+            }
+            // console.log(this.participants);
+            // console.log(this.participantIdentities);
+          });
+      });
+    // this.searched = !this.searched;
+    // this.searchUnused = !this.searchUnused;
+  }
+
   matchSummonerName(participantIds) {
     for (const name of participantIds) {
       if (name.player.summonerName.toLowerCase() === this.summonerName.toLowerCase()) {
