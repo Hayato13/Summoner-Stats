@@ -7,4 +7,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'lol-app';
+  data: string;
+
+  handleResults(summonerName) {
+    this.data = summonerName;
+  }
 }

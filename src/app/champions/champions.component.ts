@@ -1,6 +1,6 @@
+import { CommonService } from './../common.service';
 import { ChampionsService } from './champions.service';
-import { Component, OnInit } from '@angular/core';
-import { NgForm } from '@angular/forms';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import championData from '../../../ChampionItemInfo/champion.json';
 
 @Component({
@@ -9,7 +9,8 @@ import championData from '../../../ChampionItemInfo/champion.json';
   styleUrls: ['./champions.component.css']
 })
 export class ChampionsComponent implements OnInit {
-  summonerName: string;
+  private subscription: Subscription;
+  @Input() public summonerName: string;
   summonerIconPath: string;
   matchHistory: object[] = [];
   searched: boolean = false;
@@ -46,13 +47,24 @@ export class ChampionsComponent implements OnInit {
   spellIcon: string = '../../../assets/img/img/spell/';
 
 
-  constructor(public championsService: ChampionsService) { }
+  constructor(public championsService: ChampionsService,
+              public commonService: CommonService) { }
 
   ngOnInit() {
+    this.subscription = this.commonService.notifyObservable$
+      .subscribe((res) => {
+        console.log(res.value);
+        this.search(res);
+      });
   }
 
-  onSearch(form: NgForm) {
-    this.summonerName = form.value.summonerName;
+  ngOnDestroy() {
+    this.subscription.unsubscribe();
+  }
+
+  search(summonerName) {
+    // console.log(summonerName);
+    this.summonerName = summonerName.value;
     this.championsService.fetchSummoner(this.summonerName)
       .subscribe((matchHistoryResponse: object[]) => {
         this.matchHistory.push(matchHistoryResponse);
@@ -98,8 +110,6 @@ export class ChampionsComponent implements OnInit {
             // console.log(this.participantIdentities);
           });
       });
-    this.searched = !this.searched;
-    this.searchUnused = !this.searchUnused;
   }
 
   matchSummonerName(participantIds) {
@@ -109,7 +119,7 @@ export class ChampionsComponent implements OnInit {
         this.participants[name.participantId - 1].gameId = participantIds.gameId;
         this.participants[name.participantId - 1].profileIcon = participantIds[name.participantId - 1].player.profileIcon;
         this.participantStats.push(this.participants[name.participantId - 1]);
-        this.participantStats.sort((a , b) => b.gameId - a.gameId);
+        this.participantStats.sort((a, b) => b.gameId - a.gameId);
         console.log(this.participantStats);
         this.summonerIcon = this.participantStats[0].profileIcon;
         this.summonerIconPath = 'http://ddragon.leagueoflegends.com/cdn/9.20.1/img/profileicon/' + this.summonerIcon + '.png';
