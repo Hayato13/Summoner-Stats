@@ -12,7 +12,7 @@
   </div>
 </div>
 
-<div *ngIf="searched" class="container" #matchHistory>
+<div *ngIf="searched" class="container">
   <img class="rounded border border-dark profile" [src]="summonerIconPath" alt="Summoner Icon" height="100" width="100"
     *ngIf="summonerIconPath">
   <h1>{{ summonerObject }}</h1>
@@ -101,45 +101,45 @@
             <div class="container-fluid">
               <div class="row">
                 <div class="col-sm-auto">
-                  <div class="blue" #blue1 (click)="onClick(blue1.innerText)">
+                  <div class="blue">
                     <img src={{championIcon}}{{champions[stats.stats.bchamp1]}}.png height="20" width="20">
                     {{ stats.stats.blue1 }}
                   </div>
-                  <div class="blue" #blue2 (click)="onClick(blue2.innerText)">
+                  <div class="blue">
                     <img src={{championIcon}}{{champions[stats.stats.bchamp2]}}.png height="20" width="20">
                     {{ stats.stats.blue2 }}
                   </div>
-                  <div class="blue" #blue3 (click)="onClick(blue3.innerText)">
+                  <div class="blue">
                     <img src={{championIcon}}{{champions[stats.stats.bchamp3]}}.png height="20" width="20">
                     {{ stats.stats.blue3 }}
                   </div>
-                  <div class="blue" #blue4 (click)="onClick(blue4.innerText)">
+                  <div class="blue">
                     <img src={{championIcon}}{{champions[stats.stats.bchamp4]}}.png height="20" width="20">
                     {{ stats.stats.blue4 }}
                   </div>
-                  <div class="blue" #blue5 (click)="onClick(blue5.innerText)">
+                  <div class="blue">
                     <img src={{championIcon}}{{champions[stats.stats.bchamp5]}}.png height="20" width="20">
                     {{ stats.stats.blue5 }}
                   </div>
                 </div>
                 <div class="col-sm-auto">
-                  <div class="red" #red1 (click)="onClick(red1.innerText)">
+                  <div class="red">
                     <img src={{championIcon}}{{champions[stats.stats.rchamp1]}}.png height="20" width="20">
                     {{ stats.stats.red1 }}
                   </div>
-                  <div class="red" #red2 (click)="onClick(red2.innerText)">
+                  <div class="red">
                     <img src={{championIcon}}{{champions[stats.stats.rchamp2]}}.png height="20" width="20">
                     {{ stats.stats.red2 }}
                   </div>
-                  <div class="red" #red3 (click)="onClick(red3.innerText)">
+                  <div class="red">
                     <img src={{championIcon}}{{champions[stats.stats.rchamp3]}}.png height="20" width="20">
                     {{ stats.stats.red3 }}
                   </div>
-                  <div class="red" #red4 (click)="onClick(red4.innerText)">
+                  <div class="red">
                     <img src={{championIcon}}{{champions[stats.stats.rchamp4]}}.png height="20" width="20">
                     {{ stats.stats.red4 }}
                   </div>
-                  <div class="red" #red5 (click)="onClick(red5.innerText)">
+                  <div class="red">
                     <img src={{championIcon}}{{champions[stats.stats.rchamp5]}}.png height="20" width="20">
                     {{ stats.stats.red5 }}
                   </div>
