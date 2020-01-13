@@ -1,5 +1,6 @@
 import { CommonService } from './../common.service';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -13,12 +14,14 @@ export class SearchComponent implements OnInit {
 
 
 
-  constructor( private commonService: CommonService ) { }
+  constructor( private commonService: CommonService,
+               private router: Router  ) { }
 
   ngOnInit() {
   }
 
   onSearch(form: NgForm) {
     this.commonService.notifyOther({option: 'onSearch', value: form.value.summonerName});
+    this.router.navigate(['/history']);
   }
 }
