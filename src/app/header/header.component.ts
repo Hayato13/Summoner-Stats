@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   }
 
   refresh() {
-    this.router.navigate(['/']);
+    document.location.href = '/';
   }
 
 }
