@@ -124,6 +124,9 @@ export class ChampionsComponent implements OnInit {
         this.summonerIcon = this.participantStats[0].profileIcon;
         this.summonerIconPath = 'http://ddragon.leagueoflegends.com/cdn/9.20.1/img/profileicon/' + this.summonerIcon + '.png';
       }
+      if (this.participantStats.length === 20) {
+        break;
+      }
     }
   }
 }
