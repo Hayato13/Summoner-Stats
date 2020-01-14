@@ -1,4 +1,8 @@
-<div class="container">
+<div *ngIf="isLoading" style="text-align: center; margin-top: 3em">
+  <app-loading-spinner></app-loading-spinner>
+</div>
+
+<div class="container" *ngIf="!isLoading">
   <a routerLink="/history"></a>
   <img class="rounded border border-dark profile" [src]="summonerIconPath" alt="Summoner Icon" height="100" width="100"
     *ngIf="summonerIconPath">

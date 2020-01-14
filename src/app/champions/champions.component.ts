@@ -11,6 +11,7 @@ import championData from '../../../ChampionItemInfo/champion.json';
 export class ChampionsComponent implements OnInit {
   private subscription: Subscription;
   @Input() public summonerName: string;
+  isLoading = false;
   summonerIconPath: string;
   matchHistory: object[] = [];
   searched: boolean = false;
@@ -64,6 +65,7 @@ export class ChampionsComponent implements OnInit {
 
   search(summonerName) {
     // console.log(summonerName);
+    this.isLoading = true;
     this.summonerName = summonerName.value;
     this.championsService.fetchSummoner(this.summonerName)
       .subscribe((matchHistoryResponse: object[]) => {
@@ -127,6 +129,7 @@ export class ChampionsComponent implements OnInit {
       if (this.participantStats.length === 20) {
         break;
       }
+      this.isLoading = false;
     }
   }
 }

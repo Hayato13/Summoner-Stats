@@ -8,6 +8,7 @@ import { ChampionsComponent } from './champions/champions.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HeaderComponent } from './header/header.component';
 import { SearchComponent } from './search/search.component';
+import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
 
 const appRoutes: Routes = [
    { path: '', component: SearchComponent },
@@ -18,7 +19,8 @@ const appRoutes: Routes = [
       AppComponent,
       ChampionsComponent,
       HeaderComponent,
-      SearchComponent
+      SearchComponent,
+      LoadingSpinnerComponent
    ],
    imports: [
       BrowserModule,
