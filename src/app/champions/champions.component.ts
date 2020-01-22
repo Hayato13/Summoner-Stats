@@ -8,10 +8,11 @@ import championData from '../../../ChampionItemInfo/champion.json';
   templateUrl: './champions.component.html',
   styleUrls: ['./champions.component.css']
 })
-export class ChampionsComponent implements OnInit {
+export class ChampionsComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   @Input() public summonerName: string;
   isLoading = false;
+  error: string = null;
   summonerIconPath: string;
   matchHistory: object[] = [];
   searched: boolean = false;
@@ -70,7 +71,12 @@ export class ChampionsComponent implements OnInit {
     this.championsService.fetchSummoner(this.summonerName)
       .subscribe((matchHistoryResponse: object[]) => {
         this.matchHistory.push(matchHistoryResponse);
-      });
+      },
+      error => {
+        console.log(error.statusText);
+        this.error = 'An error occurred!';
+        }
+      );
     this.championsService.fetchMatchId(this.summonerName)
       .subscribe((matchHistoryResponse: number) => {
         const matchId = matchHistoryResponse;
