@@ -1,13 +1,14 @@
 import { CommonService } from './../common.service';
 import { ChampionsService } from './champions.service';
 import { Component, OnInit, Input, OnDestroy } from '@angular/core';
+import { Subscription } from 'rxjs';
 import championData from '../../../ChampionItemInfo/champion.json';
-
 @Component({
   selector: 'app-champions',
   templateUrl: './champions.component.html',
   styleUrls: ['./champions.component.css']
 })
+
 export class ChampionsComponent implements OnInit, OnDestroy {
   private subscription: Subscription;
   @Input() public summonerName: string;
@@ -19,9 +20,9 @@ export class ChampionsComponent implements OnInit, OnDestroy {
   searchUnused: boolean = true;
   champions: any = championData;
   matchId: object[] = [];
-  participantIdentities: object[] = [];
-  participants: object[] = [];
-  participantStats: object[] = [];
+  participantIdentities: any = [];
+  participants: any = [];
+  participantStats: any = [];
   summonerObject: object;
   summonerIcon: number;
   matchStatsObject: object[] = [];
@@ -81,7 +82,7 @@ export class ChampionsComponent implements OnInit, OnDestroy {
       .subscribe((matchHistoryResponse: number) => {
         const matchId = matchHistoryResponse;
         this.championsService.fetchMatchData(matchId)
-          .subscribe((matchStats: {}) => {
+          .subscribe((matchStats: any) => {
             this.participantIdentities = matchStats.participantIdentities;
             this.participantIdentities.gameId = matchStats.gameId;
             this.participants = matchStats.participants;
