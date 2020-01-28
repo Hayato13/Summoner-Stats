@@ -73,11 +73,43 @@ export class ChampionsComponent implements OnInit, OnDestroy {
       .subscribe((matchHistoryResponse: object[]) => {
         this.matchHistory.push(matchHistoryResponse);
       },
-      error => {
-        console.log(error.statusText);
-        this.error = 'An error occurred!';
+      errorRes => {
+        switch (errorRes.status) {
+          case 401:
+            this.error = 'Error: Unathorized user';
+            break;
+          case 403:
+            this.error = 'Error: The request is forbidden';
+            break;
+          case 404:
+            this.error = 'Error: Summoner name not found';
+            break;
+          case 405:
+            this.error = 'Error: Method not allowed';
+            break;
+          case 415:
+            this.error = 'Error: Unsupported media type';
+            break;
+          case 429:
+            this.error = 'Error: Rate limit exceeded';
+            break;
+          case 500:
+            this.error = 'Error: Internal server error';
+            break;
+          case 502:
+            this.error = 'Error: Bad gateway';
+            break;
+          case 503:
+            this.error = 'Error: Service unavailable';
+            break;
+          case 504:
+            this.error = 'Error: Gateway timeout';
+            break;
+          default:
+            this.error = 'Error: An unknown error has occurred';
         }
-      );
+      }
+    );
     this.championsService.fetchMatchId(this.summonerName)
       .subscribe((matchHistoryResponse: number) => {
         const matchId = matchHistoryResponse;
@@ -132,9 +164,6 @@ export class ChampionsComponent implements OnInit, OnDestroy {
         console.log(this.participantStats);
         this.summonerIcon = this.participantStats[0].profileIcon;
         this.summonerIconPath = 'http://ddragon.leagueoflegends.com/cdn/9.20.1/img/profileicon/' + this.summonerIcon + '.png';
-      }
-      if (this.participantStats.length === 20) {
-        break;
       }
       this.isLoading = false;
     }
