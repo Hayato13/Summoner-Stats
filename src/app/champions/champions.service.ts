@@ -22,7 +22,7 @@ export class ChampionsService {
           mergeMap((matchHistory: any) => {
             this.matchHistory = matchHistory.matches;
             console.log(this.matchHistory);
-            return matchHistory.matches.slice(0, 20);
+            return matchHistory.matches;
           })
         );
   }
