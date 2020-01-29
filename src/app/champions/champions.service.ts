@@ -6,7 +6,7 @@ import { mergeMap, map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ChampionsService {
-  apiKey: string = '?api_key=RGAPI-dfcbaea5-7c4f-4c50-a288-ffa6923bf83a';
+  apiKey: string = '?api_key=RGAPI-4d3c0e0c-15d3-4f8d-98aa-17f46e7d2711';
   summonerUrl: string = 'https://cors-anywhere.herokuapp.com/https://na1.api.riotgames.com/lol/summoner/v4/summoners/by-name/';
   matchUrl: string = 'https://cors-anywhere.herokuapp.com/https://na1.api.riotgames.com//lol/match/v4/matchlists/by-account/';
   matchStats: string = 'https://cors-anywhere.herokuapp.com/https://na1.api.riotgames.com/lol/match/v4/matches/';
@@ -21,10 +21,8 @@ export class ChampionsService {
         mergeMap((summoner: any) => this.http.get(this.matchUrl + summoner.accountId + this.apiKey))).pipe(
           mergeMap((matchHistory: any) => {
             this.matchHistory = matchHistory.matches;
-            for (const history of this.matchHistory) {
-              this.matchId.push(history.gameId);
-            }
-            return matchHistory.matches;
+            console.log(this.matchHistory);
+            return matchHistory.matches.slice(0, 20);
           })
         );
   }
@@ -37,8 +35,7 @@ export class ChampionsService {
             for (const history of matchHistory.matches) {
               this.matchId.push(history.gameId);
             }
-            this.matchId.splice((this.matchId.length / 2) , (this.matchId.length / 2));
-            return this.matchId;
+            return this.matchId.slice(0, 20);
           })
         );
   }
