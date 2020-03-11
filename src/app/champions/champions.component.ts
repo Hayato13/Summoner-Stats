@@ -56,7 +56,6 @@ export class ChampionsComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.subscription = this.commonService.notifyObservable$
       .subscribe((res) => {
-        console.log(res.value);
         this.search(res);
       });
   }
@@ -161,7 +160,6 @@ export class ChampionsComponent implements OnInit, OnDestroy {
         this.participants[name.participantId - 1].profileIcon = participantIds[name.participantId - 1].player.profileIcon;
         this.participantStats.push(this.participants[name.participantId - 1]);
         this.participantStats.sort((a, b) => b.gameId - a.gameId);
-        console.log(this.participantStats);
         this.summonerIcon = this.participantStats[0].profileIcon;
         this.summonerIconPath = 'http://ddragon.leagueoflegends.com/cdn/10.2.1/img/profileicon/' + this.summonerIcon + '.png';
       }
