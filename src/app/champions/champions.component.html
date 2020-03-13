@@ -6,7 +6,7 @@
 </div>
 
 <div class="container" *ngIf="!isLoading">
-  <a routerLink="/history"></a>
+  <a routerLink="/history/{{summonerName}}"></a>
   <img class="rounded border border-dark profile" [src]="summonerIconPath" alt="Summoner Icon" height="100" width="100"
     *ngIf="summonerIconPath">
   <h1>{{ summonerObject }}</h1>

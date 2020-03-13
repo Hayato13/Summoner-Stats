@@ -23,6 +23,6 @@ export class SearchComponent implements OnInit {
 
   onSearch(form: NgForm) {
     this.commonService.notifyOther({option: 'onSearch', value: form.value.summonerName});
-    this.router.navigate(['/history']);
+    this.router.navigate(['/history' + '/' + form.value.summonerName]);
   }
 }

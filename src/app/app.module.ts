@@ -12,7 +12,9 @@ import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.compo
 
 const appRoutes: Routes = [
    { path: '', component: SearchComponent },
-   { path: 'history', component: ChampionsComponent }
+   { path: 'history', children: [
+      { path: ':summonerName', component: ChampionsComponent }]},
+   { path: '**', component: SearchComponent}
 ];
 @NgModule({
    declarations: [

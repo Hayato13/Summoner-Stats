@@ -58,6 +58,9 @@ export class ChampionsComponent implements OnInit, OnDestroy {
       .subscribe((res) => {
         this.search(res);
       });
+    this.participants = JSON.parse(localStorage.getItem('Array'));
+    localStorage.removeItem('Array');
+    console.log(this.participants);
   }
 
   ngOnDestroy() {
@@ -72,43 +75,43 @@ export class ChampionsComponent implements OnInit, OnDestroy {
       .subscribe((matchHistoryResponse: object[]) => {
         this.matchHistory.push(matchHistoryResponse);
       },
-      errorRes => {
-        switch (errorRes.status) {
-          case 401:
-            this.error = 'Error: Unathorized user';
-            break;
-          case 403:
-            this.error = 'Error: The request is forbidden';
-            break;
-          case 404:
-            this.error = 'Error: Summoner name not found';
-            break;
-          case 405:
-            this.error = 'Error: Method not allowed';
-            break;
-          case 415:
-            this.error = 'Error: Unsupported media type';
-            break;
-          case 429:
-            this.error = 'Error: Rate limit exceeded';
-            break;
-          case 500:
-            this.error = 'Error: Internal server error';
-            break;
-          case 502:
-            this.error = 'Error: Bad gateway';
-            break;
-          case 503:
-            this.error = 'Error: Service unavailable';
-            break;
-          case 504:
-            this.error = 'Error: Gateway timeout';
-            break;
-          default:
-            this.error = 'Error: An unknown error has occurred';
+        errorRes => {
+          switch (errorRes.status) {
+            case 401:
+              this.error = 'Error: Unathorized user';
+              break;
+            case 403:
+              this.error = 'Error: The request is forbidden';
+              break;
+            case 404:
+              this.error = 'Error: Summoner name not found';
+              break;
+            case 405:
+              this.error = 'Error: Method not allowed';
+              break;
+            case 415:
+              this.error = 'Error: Unsupported media type';
+              break;
+            case 429:
+              this.error = 'Error: Rate limit exceeded';
+              break;
+            case 500:
+              this.error = 'Error: Internal server error';
+              break;
+            case 502:
+              this.error = 'Error: Bad gateway';
+              break;
+            case 503:
+              this.error = 'Error: Service unavailable';
+              break;
+            case 504:
+              this.error = 'Error: Gateway timeout';
+              break;
+            default:
+              this.error = 'Error: An unknown error has occurred';
+          }
         }
-      }
-    );
+      );
     this.championsService.fetchMatchId(this.summonerName)
       .subscribe((matchHistoryResponse: number) => {
         const matchId = matchHistoryResponse;
@@ -143,12 +146,14 @@ export class ChampionsComponent implements OnInit, OnDestroy {
                 this.participants[name.participantId - 1].stats.rchamp4 = this.participants[8].championId;
                 this.participants[name.participantId - 1].stats.red5 = this.participantIdentities[9].player.summonerName;
                 this.participants[name.participantId - 1].stats.rchamp5 = this.participants[9].championId;
-
+                localStorage.removeItem('Array');
+                localStorage.setItem('Array', JSON.stringify(this.participants));
               }
             }
             // console.log(this.participants);
             // console.log(this.participantIdentities);
           });
+        console.log(this.participants);
       });
   }
 
