@@ -1,5 +1,5 @@
 import { CommonService } from './../common.service';
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 
@@ -11,12 +11,8 @@ import { NgForm } from '@angular/forms';
 export class SearchComponent implements OnInit {
   summonerName: string;
 
-  @Output() public found = new EventEmitter<string>();
-
-
-
   constructor( private commonService: CommonService,
-               private router: Router  ) { }
+               private router: Router ) { }
 
   ngOnInit() {
   }

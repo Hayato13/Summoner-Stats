@@ -58,9 +58,6 @@ export class ChampionsComponent implements OnInit, OnDestroy {
       .subscribe((res) => {
         this.search(res);
       });
-    this.participants = JSON.parse(localStorage.getItem('Array'));
-    localStorage.removeItem('Array');
-    console.log(this.participants);
   }
 
   ngOnDestroy() {
@@ -146,14 +143,11 @@ export class ChampionsComponent implements OnInit, OnDestroy {
                 this.participants[name.participantId - 1].stats.rchamp4 = this.participants[8].championId;
                 this.participants[name.participantId - 1].stats.red5 = this.participantIdentities[9].player.summonerName;
                 this.participants[name.participantId - 1].stats.rchamp5 = this.participants[9].championId;
-                localStorage.removeItem('Array');
-                localStorage.setItem('Array', JSON.stringify(this.participants));
               }
             }
             // console.log(this.participants);
             // console.log(this.participantIdentities);
           });
-        console.log(this.participants);
       });
   }
 
