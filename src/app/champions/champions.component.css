@@ -1,15 +1,18 @@
-.trinket {
-    display: inline-block;
+.stats {
+    font-size: 25px;
 }
 
 .column1 {
     text-align: center;
-    margin-left: -50px;
+    margin-left: -1em;
 }
 
 .column3 {
     text-align: center;
-    margin: auto;
+    margin-left: 1em;
+    margin-right: 1em;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .column2 {
@@ -37,3 +40,178 @@
 .red {
     margin-top: 10px;
 }
+
+@media only screen and (max-width: 1200px) {
+    .rounded.border.border-dark {
+        height: 50px;
+        width: 50px;
+    }
+
+    .champIcon {
+        height: 60px;
+        width: 60px;
+    }
+
+    .spellIcon {
+        height: 30px;
+        width: 30px;
+    }
+
+    .kda {
+        font-size: 12px;
+    }
+
+    .blue {
+        font-size: 12px;
+    }
+
+    .red {
+        font-size: 12px;
+    }
+
+    .miniChampIcon {
+        height: 15px;
+        width: 15px;
+    }
+
+    .stats {
+        font-size: 20px;
+    }
+
+}
+
+@media only screen and (max-width: 993px) {
+    .rounded.border.border-dark {
+        height: 35px;
+        width: 35px;
+    }
+
+    .champIcon {
+        height: 60px;
+        width: 60px;
+    }
+
+    .spellIcon {
+        height: 30px;
+        width: 30px;
+    }
+
+    .kda {
+        font-size: 15px;
+    }
+
+    .blue {
+        font-size: 15px;
+    }
+
+    .red {
+        font-size: 15px;
+    }
+
+    .miniChampIcon {
+        height: 17px;
+        width: 17px;
+    }
+
+    .stats {
+        font-size: 13px;
+    }
+
+    .champName {
+        font-size: 14px;
+    }
+
+    .column1 {
+        margin-left: 2em;
+    }
+
+    .column2 {
+        margin-left: 4em;
+    }
+
+    .column3 {
+        margin-left: 7em;
+    }
+
+    .column4 {
+        margin-left: 9em;
+    }
+
+    .item0, .item3 {
+        display: inline-block;
+        margin-left: -2em;
+    }
+    
+    .item2, .item5 {
+        display: inline-block;
+        margin-right: -2em;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .rounded.border.border-dark {
+        height: 30px;
+        width: 30px;
+    }
+    
+    .champIcon {
+        height: 45px;
+         width: 45px;
+     }
+    
+    .spellIcon {
+         height: 22.5px;
+         width: 22.5px;
+     }
+    
+    .kda {
+        font-size: 10px;
+     }
+    
+    .blue {
+         font-size: 13px;
+     }
+    
+    .red {
+         font-size: 13px;
+     }
+    
+    .miniChampIcon {
+          height: 13px;
+         width: 13px;
+    }
+    
+    .stats {
+        font-size: 10px;
+    }
+
+    .champName {
+            font-size: 14px;
+    }
+
+    .column1 {
+        margin-left: 2em;
+    }
+
+    .column2 {
+        margin-left: 4em;
+    }
+
+    .column3 {
+        margin-left: 7em;
+    }
+
+    .column4 {
+        margin-left: 5em;
+    }
+    
+    .item0, .item3 {
+        display: inline-block;
+        margin-left: -2em;
+    }
+    
+    .item2, .item5 {
+        display: inline-block;
+        margin-right: -2em;
+    }
+} 
