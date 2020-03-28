@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit {
   }
 
   refresh() {
-    document.location.href = '/';
+    document.location.href = 'https://summoner-stats-f47a9.firebaseapp.com/';
   }
 
 }
